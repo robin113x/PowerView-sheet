@@ -68,11 +68,13 @@
 
 
 
-# Groups
+# Groups 
 
 | PowerShell Command                                                        | Description                                                                        |
 |-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | `Get-DomainGroup \| where Name -like "*Admin*" \| select SamAccountName`   | Get all groups with names containing "Admin"                                        |
+| `Get-DomainGroupMember -Identity "Domain Admins" -Recurse    \|select GroupDomain,GroupName,MemberName`      | Get all admin groups                                                                    |
+| `Get-DomainGroup *admin* \|select name`                                                             | Get all admin groups                                                                    |
 | `Get-NetGroup`                                                             | Get all groups                                                                    |
 | `Get-NetGroup -Domain mydomain.local`                                      | Get groups of a specific domain                                                    |
 | `Get-NetGroup 'Domain Admins'`                                              | Get all data of the "Domain Admins" group                                           |
