@@ -13,8 +13,8 @@
 #### Basic Info
 | Command           | Description              |
 |-------------------|--------------------------|
-| `Get-Domain`      | **Required**. Your API key. |
-| `Get-DomainUser`  | **Required**. Your API key. |
+| `Get-Domain`      | **Get info about the current domain** |
+| `Get-DomainUser`  | **Get info about the current domain** |
 
 
 ---
