@@ -108,3 +108,17 @@
 | `Get-NetOU`                                                                 | Get Organization Units                                                             |
 | `Get-NetOU StudentMachines \| %{Get-NetComputer -ADSPath $_}`               | Get all computers inside an OU (e.g., "StudentMachines")                           |
 
+
+
+
+
+
+# Logon and Sessions
+
+| PowerShell Command                                                        | Description                                                                        |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| `Get-NetLoggedon -ComputerName <servername\HYDRA.local>`                               | Get currently logged on users on a specific computer (requires admin rights)        |
+| `Get-NetSession`                                                           | Get active sessions on the local host                                              |
+| `Get-LoggedOnLocal -ComputerName <servername>`                              | Get currently logged on users on a specific computer (requires remote registry access, default in server OS) |
+| `Get-LastLoggedon -ComputerName <servername>`                               | Get the last user logged on to a specific computer (requires admin rights)          |
+| `Get-NetRDPSession -ComputerName <servername>`                              | List RDP sessions on a specific computer (requires admin rights)                    |
