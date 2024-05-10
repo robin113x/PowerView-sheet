@@ -124,6 +124,20 @@
 | `Get-NetRDPSession -ComputerName <servername>`                              | List RDP sessions on a specific computer (requires admin rights)                    |
 
 
+#Enumerate shares 
+
+| PowerShell Command              | Description                                                       |
+|--------------------------------|-------------------------------------------------------------------|
+| Invoke-ShareFinder             | Finds (non-standard) shares on hosts in the local domain         |
+| Invoke-FileFinder              | Finds potentially sensitive files on hosts in the local domain    |
+| Find-LocalAdminAccess          | Finds machines on the domain that the current user has local admin access to |
+| Find-UserField                 | Searches a user field for a particular term                       |
+| Find-ComputerField             | Searches a computer field for a particular term                   |
+| Get-ExploitableSystem          | Finds systems likely vulnerable to common exploits                |
+| Invoke-EnumerateLocalAdmin     | Enumerates members of the local Administrators groups across all machines in the domain |
+
+
+
 
 
 
