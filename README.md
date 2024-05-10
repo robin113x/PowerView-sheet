@@ -2,7 +2,7 @@
 
 ---
 
-# PowerShell Commands for Current Domain Operations
+# PowerShell Commands for RED TEAM OPERATION
 
 ## Get Current Domain
 
