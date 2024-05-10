@@ -122,3 +122,15 @@
 | `Get-LoggedOnLocal -ComputerName <servername>`                              | Get currently logged on users on a specific computer (requires remote registry access, default in server OS) |
 | `Get-LastLoggedon -ComputerName <servername>`                               | Get the last user logged on to a specific computer (requires admin rights)          |
 | `Get-NetRDPSession -ComputerName <servername>`                              | List RDP sessions on a specific computer (requires admin rights)                    |
+
+
+
+
+
+
+
+
+
+
+
+![alt text](https://media.licdn.com/dms/image/D4D2DAQE6LZ7NUHFDSw/profile-treasury-image-shrink_800_800/0/1715372767689?e=1715979600&v=beta&t=-3N5j8XMnoJ8b0_8vUMMWLlrsMZU1hTIuzoWmRmY6yo)
