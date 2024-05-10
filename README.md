@@ -66,3 +66,43 @@
 | `Get-DomainGroup -AdminCount \| Get-DomainGroupMember -Recurse \| ?{$_.MemberName -like '*$'}` | Find any machine accounts in privileged groups                                    |
 
 
+
+
+# Groups
+
+| PowerShell Command                                                        | Description                                                                        |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| `Get-DomainGroup \| where Name -like "*Admin*" \| select SamAccountName`   | Get all groups with names containing "Admin"                                        |
+| `Get-NetGroup`                                                             | Get all groups                                                                    |
+| `Get-NetGroup -Domain mydomain.local`                                      | Get groups of a specific domain                                                    |
+| `Get-NetGroup 'Domain Admins'`                                              | Get all data of the "Domain Admins" group                                           |
+| `Get-NetGroup -AdminCount \| select name,memberof,admincount,member \| Format-List` | Search for admin groups                                                        |
+| `Get-NetGroup -UserName "myusername"`                                       | Get groups of a user                                                               |
+| `Get-NetGroupMember -Identity "Administrators" -Recurse`                   | Get users inside the "Administrators" group, including users in nested groups       |
+| `Get-NetGroupMember -Identity "Enterprise Admins" -Domain mydomain.local`   | Get users inside the "Enterprise Admins" group (exists only in the forest root domain) |
+| `Get-NetLocalGroup -ComputerName dc.mydomain.local -ListGroups`            | Get local groups of a machine (requires admin rights)                               |
+| `Get-NetLocalGroupMember -computername dcorp-dc.dollarcorp.moneycorp.local`| Get users of local groups on a computer                                             |
+| `Get-DomainObjectAcl -SearchBase 'CN=AdminSDHolder,CN=System,DC=testlab,DC=local' -ResolveGUIDs` | Check AdminSDHolder users                                                |
+| `Get-DomainObjectACL -ResolveGUIDs -Identity * \| ? {$_.SecurityIdentifier -eq $sid}` | Get ObjectACLs by SID                                                    |
+| `Get-NetGPOGroup`                                                          | Get restricted groups                                                              |
+
+# Computers
+
+| PowerShell Command                                                        | Description                                                                        |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| `Get-DomainComputer -Properties DnsHostName`                                | Get all domain names of computers                                                 |
+| `Get-NetComputer`                                                           | Get all computer objects                                                          |
+| `Get-NetComputer -Ping`                                                     | Send a ping to check if the computers are working                                 |
+| `Get-NetComputer -Unconstrained`                                            | Domain Controllers (DCs) always appear but aren't useful for privilege escalation |
+| `Get-NetComputer -TrustedToAuth`                                            | Find computers with Constrained Delegation                                         |
+| `Get-DomainGroup -AdminCount \| Get-DomainGroupMember -Recurse \| ?{$_.MemberName -like '*$'}` | Find any machine accounts in privileged groups                                    |
+
+# Organization Units (OUs)
+
+| PowerShell Command                                                        | Description                                                                        |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| `Get-DomainOU -Properties Name \| sort -Property Name`                      | Get names of OUs                                                                   |
+| `Get-DomainOU "Servers" \| %{Get-DomainComputer -SearchBase $_.distinguishedname -Properties Name}` | Get all computers inside an OU (e.g., "Servers")                              |
+| `Get-NetOU`                                                                 | Get Organization Units                                                             |
+| `Get-NetOU StudentMachines \| %{Get-NetComputer -ADSPath $_}`               | Get all computers inside an OU (e.g., "StudentMachines")                           |
+
