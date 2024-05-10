@@ -27,7 +27,7 @@
 |                 | `(Get-DomainPolicy)."KerberosPolicy"`               | Kerberos tickets info (MaxServiceAge) |
 |                 | `(Get-DomainPolicy)."SystemAccess"`                 | Password policy                     |
 |                 | `(Get-DomainPolicy).PrivilegeRights`                | Check your privileges               |
-|                 | `Get-DomainPolicyData`                              | Same as Get-DomainPolicy            |
+|                 | `Get-DomainP\| Format-ListolicyData`                              | Same as Get-DomainPolicy            |
 | **Computers**   | `Get-NetComputer \| Select-Object samaccountname, operatingsystem` | Get information about computers in the domain |
 |                 | `Get-NetComputer -Unconstrained`                    | Get information about computers in the domain without constraints |
 |                 | `Get-NetComputer -TrustedToAuth \| Select-Object samaccountname` | Find computers with Constrained Delegation |
@@ -36,3 +36,33 @@
 |                 | `Get-DomainController \| Select-Object Forest, Domain, IPAddress, Name, OSVersion \| Format-List` | Get specific info of the current domain controller |
 
 ---
+
+
+# PowerShell Commands for User Operations
+ 
+## Users
+
+| PowerShell Command                                       | Description                              |
+|----------------------------------------------------------|------------------------------------------|
+| `Get-DomainUser -Properties name, MemberOf ` | Get usernames and their groups           |
+| `Get-NetUser`                                            | Get-DomainUser and Get-NetUser are kind of the same |
+| `Get-NetUser \| Select-Object samaccountname, description, pwdlastset, logoncount, badpwdcount` | Get detailed information about users |
+| `Get-DomainUser -LDAPFilter "Description=* *" \| select name, description`                       | Get all Description of  user   |
+| `Get-NetUser -UserName student107`                       | Get information about a specific user   |
+| `Get-NetUser -Properties name, description`              | Get all user descriptions                |
+| `Get-NetUser -Properties name, pwdlastset, logoncount, badpwdcount` | Get various user attributes               |
+| `Find-UserField -SearchField Description -SearchTerm "built"` | Search for user accounts by description containing "built" |
+
+
+# Computers
+
+| PowerShell Command                                                        | Description                                                                        |
+|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| `Get-DomainComputer -Properties DnsHostName`                                | Get all domain names of computers                                                 |
+| `Get-NetComputer`                                                           | Get all computer objects                                                          |
+| `Get-NetComputer -Ping`                                                     | Send a ping to check if the computers are working                                 |
+| `Get-NetComputer -Unconstrained`                                            | Domain Controllers (DCs) always appear but aren't useful for privilege escalation |
+| `Get-NetComputer -TrustedToAuth`                                            | Find computers with Constrained Delegation                                         |
+| `Get-DomainGroup -AdminCount \| Get-DomainGroupMember -Recurse \| ?{$_.MemberName -like '*$'}` | Find any machine accounts in privileged groups                                    |
+
+
