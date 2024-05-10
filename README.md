@@ -124,7 +124,7 @@
 | `Get-NetRDPSession -ComputerName <servername>`                              | List RDP sessions on a specific computer (requires admin rights)                    |
 
 
-#Enumerate shares 
+# Enumerate shares 
 
 | PowerShell Command              | Description                                                       |
 |--------------------------------|-------------------------------------------------------------------|
